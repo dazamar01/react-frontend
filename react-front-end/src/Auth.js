@@ -15,8 +15,8 @@ class Auth {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
-      // mode: 'cors',
-      // cache: 'default'
+      mode: 'cors',
+      cache: 'default'
     }).then(response => {
       const statusCode = response.status;
       respuesta = statusCode;
@@ -25,15 +25,14 @@ class Auth {
       console.log(headers);
 
     }).then(json => {
-        /*
-        console.log("json",json)
-        if (json.type === 'error') {
-          alert(json.msg);
+        
+        if (respuesta !== 200) {
+          alert("Acceso no permitido");
         } else {
-          // this.loggedIn = true;
-          // history.replace('/callback');
+          this.loggedIn = true;
+          history.replace('/callback');
         }
-        */
+        
       });
   }
 
