@@ -7,18 +7,18 @@ import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 class Layout extends Component {
-    
 
-    render () {
-        return (
-            <Aux>
-                <div>Toolbar</div>
-                <main className={"Content"}>
-                    {this.props.children}
-                </main>
-            </Aux>
-        )
-    }
+
+	render() {
+		return (
+			<Aux>
+				<div>Toolbar</div>
+				<main className={"Content"}>
+					{this.props.children}
+				</main>
+			</Aux>
+		)
+	}
 }
 
 // const mapStateToProps = state => {
