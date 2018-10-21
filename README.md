@@ -17,6 +17,11 @@ create-react-app front-end
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
 
+#### You can install bootstrap too, but it's up to you
+
+npm install --save react-bootstrap
+
+
 ### Create the next structure (under the src folder)
 
     assets

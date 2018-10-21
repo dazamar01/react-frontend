@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -15,16 +15,16 @@ class App extends Component {
   state = {
     logedIn: false
   }
-  
+
   render() {
-    
+
     let routes = (
       <Switch>
         <Route path="/" component={Auth} />
       </Switch>
     );
 
-    if (this.state.logedIn ){
+    if (this.state.logedIn) {
       routes = (
         <Switch>
           <Route path="/auth" component={Auth} />
@@ -33,7 +33,7 @@ class App extends Component {
       );
     }
 
-    
+
     return (
       <div>
         <Layout>
@@ -44,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default withRouter( App ) ;
+export default withRouter(App);
