@@ -12,15 +12,16 @@ import './App.css';
 
 class App extends Component {
 
-  state = {
-    logedIn: false
+  componentDidMount () {
+    this.props.onTryAutoSignup();
   }
 
   render() {
 
+    
     let routes = (
       <Switch>
-        <Route path="/" component={Auth} />
+        <Route path="/" exact component={Auth} />
         
       </Switch>
     );
@@ -28,7 +29,6 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
-          
           <Route path="/logout" component={Logout} />
         </Switch>
       );
