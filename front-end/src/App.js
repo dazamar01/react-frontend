@@ -4,6 +4,7 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Auth from '../src/containers/Auth/AuthContainer';
+import Logout from './containers/Auth/Logout/Logout';
 import Layout from './hoc/Layout/Layout';
 import * as actions from './store/actions/index';
 
@@ -28,7 +29,7 @@ class App extends Component {
       routes = (
         <Switch>
           
-          <Route path="/auth" component={Auth} />
+          <Route path="/logout" component={Logout} />
         </Switch>
       );
     }

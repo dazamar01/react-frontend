@@ -27,7 +27,7 @@ export const authFail = (error) => {
 
 // When the user do the log out action
 export const logout = () => {
-    // localStorage.removeItem('token');
+    localStorage.removeItem('token');
     // localStorage.removeItem('expirationDate');
     // localStorage.removeItem('userId');
     return {

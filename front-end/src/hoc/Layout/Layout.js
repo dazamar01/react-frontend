@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import Aux from '../Aux/Aux';
 import './Layout.css';
@@ -12,7 +13,13 @@ class Layout extends Component {
 	render() {
 		return (
 			<Aux>
-				<div>Toolbar</div>
+				<ul >
+					<li className="NavigationItem">
+					{this.props.isAuthenticated ?
+						<NavLink to="/logout">Salir</NavLink>
+						: null}
+					</li>
+				</ul>
 				<main className={"Content"}>
 					{this.props.children}
 				</main>
@@ -21,11 +28,11 @@ class Layout extends Component {
 	}
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         isAuthenticated: state.auth.token !== null
-//     };
-// };
+const mapStateToProps = state => {
+	return {
+		isAuthenticated: state.auth.token !== null
+	};
+};
 
-// export default connect( mapStateToProps )( Layout );
-export default Layout;
+export default connect(mapStateToProps)(Layout);
+// export default Layout;
