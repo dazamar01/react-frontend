@@ -1,4 +1,4 @@
-# React app
+# React app (with redux)
 
 ### For the first time maybe you need to install global "create-react-app", do it by typing (in Mac maybe you need to use the sudo prefix)
 
