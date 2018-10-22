@@ -10,11 +10,10 @@ export const authStart = () => {
 };
 
 // When the auth result is successfull
-export const authSuccess = (token, userId) => {
+export const authSuccess = (token) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        idToken: token,
-        userId: userId
+        token: token
     };
 };
 
@@ -61,10 +60,13 @@ export const auth = (username, password, isSignedUp) => {
         axios.post(url, data, headers)
             .then(response => {
                 //llamar a localStorage
-                console.log('Respuesta ok', response.headers);
+                // localStorage.setItem('token', response.data.idToken);
+                const token = response.headers.authorization;
+                localStorage.setItem('token', token);
+                dispatch(authSuccess(token));
             })
             .catch(error => {
-                console.error('Error llamando a login', error);
+                dispatch(authFail(error));
             });
     };
 }

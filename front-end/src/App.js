@@ -20,14 +20,15 @@ class App extends Component {
     let routes = (
       <Switch>
         <Route path="/" component={Auth} />
+        
       </Switch>
     );
 
-    if (this.state.logedIn) {
+    if (this.props.isAuthenticated) {
       routes = (
         <Switch>
+          
           <Route path="/auth" component={Auth} />
-          <Redirect to="/" />
         </Switch>
       );
     }
