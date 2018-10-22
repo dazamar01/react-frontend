@@ -1,4 +1,6 @@
-# React app (with redux)
+# React app (with redux and bootstrap)
+
+##### The purpose of this app it's only make a login and logout process.
 
 ### For the first time maybe you need to install global "create-react-app", do it by typing (in Mac maybe you need to use the sudo prefix)
 
