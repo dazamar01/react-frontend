@@ -1,6 +1,5 @@
 
-
-import axios from '../../axios-orders';
+import axios from '../../axios';
 import * as actionTypes from './actionTypes';
 
 // When the login actions will be triggered
@@ -48,32 +47,27 @@ export const setAuthRedirectPath = (path) => {
     };
 };
 
-export const auth = (email, password, isSignedUp) => {
+export const auth = (username, password, isSignedUp) => {
     return dispatch => {
         dispatch(authStart());
         const data = {
-            email,
+            username: username,
             password
         };
+        const headers = {
+            'Content-Type':'application/json'
+        };
         let url = '/login';
-        axios.post(url, data)
+        axios.post(url, data, headers)
             .then(response => {
                 //llamar a localStorage
-                console.log('Respuesta ok', response);
+                console.log('Respuesta ok', response.headers);
             })
             .catch(error => {
                 console.error('Error llamando a login', error);
             });
     };
 }
-
-
-export const setAuthRedirectPath = (path) => {
-    return {
-        type: actionTypes.SET_AUTH_REDIRECT_PATH,
-        path: path
-    };
-};
 
 export const authCheckState = () => {
     return dispatch => {

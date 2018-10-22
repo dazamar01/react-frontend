@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import { Button, FormGroup, FormControl } from 'react-bootstrap';
 
 import Aux from '../../hoc/Aux/Aux';
+import * as actions from '../../store/actions/index';
 
 import './Auth.css';
 
@@ -16,7 +20,8 @@ class Auth extends Component {
 	}
 
 	login = () => {
-		console.log('login');
+		console.log('Starting the login process');
+		this.props.onAuth( this.state.username, this.state.password, this.state.isSignedUp );
 	}
 
 	render() {
@@ -56,4 +61,21 @@ class Auth extends Component {
 	}
 }
 
-export default Auth;
+const mapStateToProps = state => {
+	return {
+		loading: state.auth.loading,
+		error: state.auth.error,
+		isAuthenticated: state.auth.token !== null,
+		
+		authRedirectPath: state.auth.authRedirectPath
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		onAuth: (email, password, isSignedUp) => dispatch(actions.auth(email, password, isSignedUp)),
+		onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
